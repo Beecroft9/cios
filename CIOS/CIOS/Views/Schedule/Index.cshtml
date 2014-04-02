@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CIOS.Models.Schedule>
+
+@{
+    ViewBag.Title = "Set Schedule";
+}
+
+<h2>Set Schedule</h2>
+
+@foreach(var item in Model)
+{
+    @Html.DisplayNameFor(model => model.quizDueDate)
+    @Html.DisplayFor(modelItem => item.quizDueDate)
+    <br />
+    @Html.DisplayNameFor(model => model.midTermDate)
+    @Html.DisplayFor(modelItem => item.midTermDate) 
+    <br />
+    @Html.DisplayNameFor(model => model.paperDueDate)
+    @Html.DisplayFor(modelItem => item.paperDueDate)
+    <br />
+    @Html.DisplayNameFor(model => model.evalFormDueDate)
+    @Html.DisplayFor(modelItem => item.evalFormDueDate)
+    <br />
+    @Html.DisplayNameFor(model => model.exitInterviewDueDate)
+    @Html.DisplayFor(modelItem => item.exitInterviewDueDate)
+    <br />
+    @Html.DisplayNameFor(model => model.employerUpdateReminder)
+    @Html.DisplayFor(modelItem => item.employerUpdateReminder)
+    <br />
+@*        <th>
+            @Html.DisplayNameFor(model => model.employerEvaluationReminder)
+        </th>*@
+
+@*        <td>
+            @Html.DisplayFor(modelItem => item.employerEvaluationReminder)
+        </td>*@
+       
+    @Html.ActionLink("Edit", "Edit", new { id = item.scheduleId })
+}
+

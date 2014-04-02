@@ -1,0 +1,80 @@
+﻿@model CIOS.Models.Schedule
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Schedule</legend>
+
+        @Html.HiddenFor(model => model.scheduleId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.quizDueDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.quizDueDate)
+            @Html.ValidationMessageFor(model => model.quizDueDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.midTermDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.midTermDate)
+            @Html.ValidationMessageFor(model => model.midTermDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.paperDueDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.paperDueDate)
+            @Html.ValidationMessageFor(model => model.paperDueDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.evalFormDueDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.evalFormDueDate)
+            @Html.ValidationMessageFor(model => model.evalFormDueDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.exitInterviewDueDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.exitInterviewDueDate)
+            @Html.ValidationMessageFor(model => model.exitInterviewDueDate)
+        </div>
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.employerUpdateReminder)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.employerUpdateReminder)
+            @Html.ValidationMessageFor(model => model.employerUpdateReminder)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

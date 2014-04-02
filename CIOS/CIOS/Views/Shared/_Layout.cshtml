@@ -1,0 +1,145 @@
+﻿@*
+ * --------------------------------------------------------------------------------------------------------
+ * File Name:
+ * Project Name:
+ * --------------------------------------------------------------------------------------------------------
+ * Author's Name and Email: Lee John (johnlh@goldmail.etsu.edu) & Cody Beecroft (cody.beecroft@gmail.com)
+ * Course-Section:
+ * Creation Date:
+ * Last Modified: (Name, Date, Email)
+ * --------------------------------------------------------------------------------------------------------
+ *@
+@{
+    
+    var navOptions = 0; // 0=not logged in, 1=Student, 2=Employer, 3=Dept Chair, 4=CSPersonnel
+    if (!User.Identity.IsAuthenticated)
+    {
+        navOptions = 0;
+    }
+        
+       
+    else if (this.User.IsInRole("Personnel"))
+    {
+        navOptions = 4;
+    }
+    else if (this.User.IsInRole("Student"))
+    {
+        navOptions = 1;
+    }
+    else if (this.User.IsInRole("Employer"))
+    {
+        navOptions = 2;
+    }
+    else if (this.User.IsInRole("DepartmentChair"))
+    {
+       navOptions = 3;
+    }
+    else
+    {
+        navOptions = 0;
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title CIOS</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+  
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+        <div>
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="col-sm-12">
+                        <div class="page-header">
+                            <h1>@Html.ActionLink("CIOS", "Index", "Home")</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-sm-3">
+                        <ul class="nav nav-list">
+                            @switch (navOptions)
+                            {
+                                case 0:
+                                    <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Student", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Employer", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Department Chair", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Personnel", "Index", "Home")</li>
+
+                                    break;
+                                case 1:
+                                <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Student Information", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Resume", "Index", "Home")</li>
+                                <li>@Html.ActionLink("View Opportunities", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Learning Agreement", "Index", "Home")</li>
+
+                                    break;
+                                case 2:
+                                <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Company Information", "Index", "Home")</li>
+                                <li>@Html.ActionLink("New Opportunity", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Manage Opportunities", "Index", "Home")</li>
+                                <li>@Html.ActionLink("End Of Semester Evaluation", "Index", "Home")</li>
+
+                                    break;
+                                case 3:
+                                <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Learning Agreement", "Index", "Home")</li>
+
+                                    break;
+                                case 4:
+                                <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Notifications", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Generate Teaser", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Student", "Index", "Deliverables")</li>
+                                <li>@Html.ActionLink("Employer", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Department Chair", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Semester Information", "Index", "Schedule")</li>
+                                <li>@Html.ActionLink("Generate Reports", "Index", "Home")</li>
+                                <li>@Html.ActionLink("User Accounts", "Index", "CreateNewUser")</li>
+                                    break;
+                            }
+                        </ul>
+                        <br />
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div id="body">
+                            <div class="breadcrumb col-lg-offset-8">
+                                <section id="login">
+                                    @Html.Partial("_LoginPartial")
+                                </section>
+                            </div>
+
+
+                            @RenderSection("featured", required: false)
+                            <section class="content-wrapper main-content-clear-fix">
+                                @RenderBody()
+                            </section>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; @DateTime.Now.Year - CIOS</p>
+            </div>
+        </footer>
+        @Scripts.Render("~/bundles/ciosAppScripts")
+        @Scripts.Render("~/scripts/bootstrap.js")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
