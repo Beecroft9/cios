@@ -1,0 +1,99 @@
+﻿@model CIOS.Models.Schedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Schedule</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.quizDueDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quizDueDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.midTermDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.midTermDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paperDueDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paperDueDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.evalFormDueDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.evalFormDueDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exitInterviewDueDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exitInterviewDueDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.quizReminder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quizReminder)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.midReminder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.midReminder)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paperReminder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paperReminder)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.evalReminder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.evalReminder)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exitInterviewReminder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exitInterviewReminder)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.employerUpdateReminder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.employerUpdateReminder)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.employerEvaluationReminder)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.employerEvaluationReminder)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.scheduleId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

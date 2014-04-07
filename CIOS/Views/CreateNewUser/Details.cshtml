@@ -1,0 +1,64 @@
+﻿@model CIOS.Models.CSPersonnel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CSPersonnel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserProfile.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserProfile.UserName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UserProfile.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserProfile.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.firstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.firstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.middleName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.middleName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.isActive)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.isActive)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lastAccess)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lastAccess)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.csPersonnelId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

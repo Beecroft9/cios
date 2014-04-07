@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CIOS.Models.Schedule>
+
+@{
+    ViewBag.Title = "Set Schedule";
+}
+
+<h2>Set Schedule</h2>
+
+@foreach (var item in Model)
+{
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.quizDueDate)</dt>
+        <dd>
+            @Html.DisplayFor(modelItem => item.quizDueDate)</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.midTermDate)</dt>
+        <dd>
+            @Html.DisplayFor(modelItem => item.midTermDate) </dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.paperDueDate)</dt>
+        <dd>
+            @Html.DisplayFor(modelItem => item.paperDueDate)</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.evalFormDueDate)</dt>
+        <dd>
+            @Html.DisplayFor(modelItem => item.evalFormDueDate)</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.exitInterviewDueDate)</dt>
+        <dd>
+            @Html.DisplayFor(modelItem => item.exitInterviewDueDate)</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.employerUpdateReminder)</dt>
+        <dd>
+            @Html.DisplayFor(modelItem => item.employerUpdateReminder)</dd>
+    </dl>
+@*        <th>
+            @Html.DisplayNameFor(model => model.employerEvaluationReminder)
+        </th>*@
+
+@*        <td>
+            @Html.DisplayFor(modelItem => item.employerEvaluationReminder)
+        </td>*@
+       
+    @Html.ActionLink("Edit", "Edit", new { id = item.scheduleId })
+}
+

@@ -1,0 +1,209 @@
+﻿@*
+ * --------------------------------------------------------------------------------------------------------
+ * File Name:
+ * Project Name:
+ * --------------------------------------------------------------------------------------------------------
+ * Author's Name and Email: Lee John (johnlh@goldmail.etsu.edu) & Cody Beecroft (cody.beecroft@gmail.com)
+ * Course-Section:
+ * Creation Date:
+ * Last Modified: (Name, Date, Email)
+ * --------------------------------------------------------------------------------------------------------
+ *@
+@{
+    
+    var navOptions = 0; // 0=not logged in, 1=Student, 2=Employer, 3=Dept Chair, 4=CSPersonnel
+    if(!User.Identity.IsAuthenticated)
+    {
+        navOptions = 0;
+    }
+
+
+    else if(this.User.IsInRole("Personnel"))
+    {
+        navOptions = 4;
+    }
+    else if(this.User.IsInRole("Student"))
+    {
+        navOptions = 1;
+    }
+    else if(this.User.IsInRole("Employer"))
+    {
+        navOptions = 2;
+    }
+    else if(this.User.IsInRole("DepartmentChair"))
+    {
+        navOptions = 3;
+    }
+    else
+    {
+        navOptions = 0;
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title CIOS</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container shad">
+        @*                <div class="row-fluid">
+                    <div class="col-sm-12">*@
+        <header class="page-header">
+            <h2>Career Services</h2>
+            <h3>College of Business and Technology</h3>
+        </header>
+        @*                    </div>
+                </div>*@
+        <div class="row-fluid" style="padding-top:0px">
+            <nav class="col-sm-2">
+                <div>
+                    <img src="~/Images/CbatNavImage.png" />
+                </div>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
+                    @switch(navOptions)
+                    {
+                        case 0:
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Student Application", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Employer Application", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+
+                            break;
+                        case 1:
+                        <li>
+                            @Html.ActionLink("Home", "Index", "Home")
+
+                        </li>
+                        <li class="dropdown-submenu">
+                            @Html.ActionLink("Student Information", "Index", "Home")
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("View", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Edit", "Index", "Home")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            @Html.ActionLink("Resume", "Index", "Home")
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Create", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Manage", "Index", "Home")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("View Opportunities", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Learning Agreement", "Index", "Home")</li>
+
+                            break;
+                        case 2:
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="dropdown-submenu">
+                            @Html.ActionLink("Company Information", "Index", "Home")
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("View", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Edit", "Index", "Home")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("New Opportunity", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Manage Opportunities", "Index", "Home")</li>
+                        <li>@Html.ActionLink("End Of Semester Evaluation", "Index", "Home")</li>
+
+                            break;
+                        case 3:
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Learning Agreement", "Index", "Home")</li>
+
+                            break;
+                        case 4:
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="dropdown-submenu">
+                            @Html.ActionLink("Notifications", "Index", "Home")
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Employers", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Students", "Index", "Home")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Generate Teaser", "Index", "Home")</li>
+                        <li class="dropdown-submenu">
+                            @Html.ActionLink("Student", "Index", "Home")
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Manage Information", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Manage Deliverables", "Index", "Deliverables")</li>
+                                <li>@Html.ActionLink("Send Opportunity Email", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Disable Accounts", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Purge", "Index", "Home")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            @Html.ActionLink("Employer", "Index", "Home")
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Manage Information", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Disable Accounts", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Purge", "Index", "Home")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            @Html.ActionLink("Department Chair", "Index", "Home")
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Create Account", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Disable Account", "Index", "Home")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            @Html.ActionLink("Semester Information", "Index", "Home")
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Set Advisors", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Set Due dates", "Index", "Schedule")</li>
+                                <li>@Html.ActionLink("Set Purge Date", "Index", "Home")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Generate Reports", "Index", "Home")</li>
+                        <li>@Html.ActionLink("User Accounts", "Index", "CreateNewUser")</li>
+                            break;
+                    }
+                </ul>
+                <br />
+            </nav>
+
+            <div class="col-sm-10">
+@*                <div id="body">*@
+                    <div class="breadcrumb row-fluid clearfix">
+                    </div>
+
+                    <div class="main-content-clear-fix">
+                        @*                            @RenderSection("featured", required: false)
+                            <section class="content-wrapper main-content-clear-fix">*@
+                        @RenderBody()
+                        @*                            </section>*@
+                    </div>
+@*                </div>*@
+            </div>
+
+        </div>
+        <footer class="footer">
+            <div class="footer_left">
+                East Tennessee State University<br />PO Box 70300<br />Johnson City, TN 37614<br />423-439-1000
+            </div>
+            <div class="footer_right">
+                Career Services<br />316 Sam-Wilson Hall | PO Box 70613<br />Johnson City, TN 37614<br />423-439-5656 |
+                <a style ="color:#002416;" href="mailto:laprade@etsu.edu">Email:Career Services</a>
+            </div>
+            <div id="footerLogo">
+
+            </div>
+        </footer>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/ciosAppScripts")
+    @Scripts.Render("~/scripts/bootstrap.js")
+    @RenderSection("scripts", required:false)
+</body>
+</html>
